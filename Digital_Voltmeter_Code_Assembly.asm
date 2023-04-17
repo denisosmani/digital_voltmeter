@@ -6,13 +6,11 @@ MISO EQU 0A0H; Dout = A0 = P2.0
 ;--------------------------------------
 
 ;----------ANALOG MULTIPLEXER----------
-;--------------------------------------
 OUTSA EQU 0A1H ; A pin of analog mux, 0A1H = P2.1
 OUTSB EQU 0A2H ; B pin of analog mux  0A2H = P2.2
 ;--------------------------------------
 
 ;---------BUTTON-SHIFTREGISTER---------
-;--------------------------------------
 SHLD EQU 0A3H
 SHCLK EQU 0A4H
 SO EQU 0A5H
