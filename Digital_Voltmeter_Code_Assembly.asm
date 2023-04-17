@@ -120,7 +120,7 @@ RETI
 ;--------------------------------/TIMER_0_ISR--------------------------------------
 
 ;=========================================================================================
-;				                   FILLON - KOMUNIKIMI ME MCP3208
+;				 FILLON - KOMUNIKIMI ME MCP3208
 ;=========================================================================================
 SAMPLE: ;pas caktimit te brezit adekuat ne menyre automatike, e masim edhe njehere vleren
 
@@ -186,12 +186,12 @@ NOP ; falling edge
 DJNZ R4, GET_DATA_LSB
 MOV 31H,A
 ;=========================================================================================
-;				                   PERFUNDON - KOMUNIKIMI ME MCP3208
+;				  PERFUNDON - KOMUNIKIMI ME MCP3208
 ;=========================================================================================
 
 
 ;=========================================================================================
-;		               FILLON - ZBRITJA, SHUMEZIMI ME 1000 DHE PJESTIMI ME 1024
+;		    FILLON - ZBRITJA, SHUMEZIMI ME 1000 DHE PJESTIMI ME 1024
 ;=========================================================================================
 MOV 54H,#12D ; <--index for blank 1st 7seg
 ;vjen vlera nga mcp3208 dhe ruhet 30H(MSB) dhe 31H(LSB)
@@ -335,12 +335,12 @@ CLR C
 DJNZ R2, HERE
 
 ;=========================================================================================
-;		              PERFUNDON - ZBRITJA, SHUMEZIMI ME 1000 DHE PJESTIMI ME 1024
+;		     PERFUNDON - ZBRITJA, SHUMEZIMI ME 1000 DHE PJESTIMI ME 1024
 ;=========================================================================================
 
 
 ;=========================================================================================
-;			                  	FILLON - EKSTRAKTIMI I SHIFRAVE
+;			    FILLON - EKSTRAKTIMI I SHIFRAVE
 ;=========================================================================================
 
 ;kodi me poshte pjeston me 10 numrin qe gjendet ne (MSB)31H-32H
@@ -458,12 +458,12 @@ MOV 58H,54H ;<-- Ruhet parashenja #00H ose #40H
 
 RET ;return from sample subroutine
 ;=========================================================================================
-;			                    	PERFUNDON - EKSTRAKTIMI I SHIFRAVE
+;			    PERFUNDON - EKSTRAKTIMI I SHIFRAVE
 ;=========================================================================================
 
 
 ;=========================================================================================
-;				                    FILLON - KOMUNIKIMI ME TASTATURE
+;				  FILLON - KOMUNIKIMI ME TASTATURE
 ;=========================================================================================
 
 GET_UPDATED_BUTTONS:
@@ -491,12 +491,12 @@ MOV 2DH,A ;send 8 bits to 2DH byte, -bitAddressable
 RET
 
 ;=========================================================================================
-;				                       PERFUNDON - KOMUNIKIMI ME TASTATURE
+;				     PERFUNDON - KOMUNIKIMI ME TASTATURE
 ;=========================================================================================
 
 
 ;=========================================================================================
-;                              FILLON - CAKTIMI MANUAL I RANGE
+;             FILLON - CAKTIMI MANUAL I RANGE
 ;=========================================================================================
 ;Nese dergohet zero ne lokacionin perkates, butoni eshte shtypur
 MANUAL_RANGE:
@@ -695,12 +695,12 @@ END_MANUAL_RANGE:
 
 RET ;return from manual range
 ;=========================================================================================
-;                            MBARON - CAKTIMI MANUAL I RANGE
+;               MBARON - CAKTIMI MANUAL I RANGE
 ;=========================================================================================
 
 
 ;=========================================================================================
-;			                        	FILLON - AUTOMATIC RANGE
+;			           FILLON - AUTOMATIC RANGE
 ;=========================================================================================
 AUTOMATIC_RANGE:
 SETB 50H ;<-- Setohet biti 0 i reg. 2AH nese brezi automatik
@@ -856,12 +856,12 @@ MOV 71H,C
 
 RET
 ;=========================================================================================
-;		                      		PERFUNDON - AUTOMATIC RANGE
+;		        PERFUNDON - AUTOMATIC RANGE
 ;=========================================================================================
 
 
 ;=========================================================================================
-;			                         	FILLON - MANUAL SAMPLE TIME
+;			      FILLON - MANUAL SAMPLE TIME
 ;=========================================================================================
 
 MANUAL_SAMPLE_TIME:
@@ -934,12 +934,12 @@ MOV @R0,A
 RET ; perfundo rritjen e displayt
 ;----------------------------------------------------------------------
 ;=========================================================================================
-;			                      	PERFUNDON - MANUAL SAMPLE TIME
+;			      PERFUNDON - MANUAL SAMPLE TIME
 ;=========================================================================================
 
 
 ;=========================================================================================
-;				                       FILLON - SHFAQJA E SHIFRAVE
+;				    FILLON - SHFAQJA E SHIFRAVE
 ;=========================================================================================
 DISPLAY_RESULT:
 SETB P1.4
@@ -992,12 +992,12 @@ DIGITS: DB 3FH, 06H, 5BH, 4FH, 66H, 6DH, 7DH, 07H, 7FH, 6FH, 40H, 00H
                                                     ;minusi-->^    ^<---blank
 
 ;=========================================================================================
-;				                    PERFUNDON - SHFAQJA E SHIFRAVE
+;				      PERFUNDON - SHFAQJA E SHIFRAVE
 ;=========================================================================================
 
 
 ;=========================================================================================
-;				                     FILLON - DECREMENT-16bit nr.
+;				       FILLON - DECREMENT-16bit nr.
 ;=========================================================================================
 ;rutina i merr parametrat nga (MSB)43H dhe 44H (LSB)
 ;numri 16-bit ne decimal eshte "n", (n*1ms) = koha e mostrimit
@@ -1018,12 +1018,12 @@ SJMP DECREMENT_UNTIL_0
 DECREMENTED_ONCE:
 RET
 ;=========================================================================================
-;			                	PERFUNDON - DECREMENT-16bit nr.
+;			    PERFUNDON - DECREMENT-16bit nr.
 ;=========================================================================================
 
 
 ;=========================================================================================
-;	                   		FILLON - Counter - Kohe Relative
+;	       FILLON - Counter - Kohe Relative
 ;=========================================================================================
 ;rutina i ruan parametrat ne MSB-45H dhe LSB-46H
 RELATIVE_TIME_1MS:
@@ -1043,12 +1043,12 @@ MOV 45H,#00H
 END_REL_TIME_ROUTINE:
 RET
 ;=========================================================================================
-;	                  		PERFUNDON - Counter - Kohe Relative
+;	       PERFUNDON - Counter - Kohe Relative
 ;=========================================================================================
 
 
 ;=========================================================================================
-;		                 	 FILLON - Konvertimi 7seg to BCD to HEX
+;		      FILLON - Konvertimi 7seg to BCD to HEX
 ;=========================================================================================
 ;kodi me poshte i merr vlerat e dhena nga perdoruesi ne 52H, 51H, 50H (tre displayt e fundit)
 ;dhe i konverton ne BCD pastaj ne HEX
@@ -1113,12 +1113,12 @@ ADDC A,#00H
 MOV 56H,A
 RET ;RETURN FROM SEVEN SEG TO BCD
 ;=========================================================================================
-;			                PERFUNDON - Konvertimi 7seg to BCD to HEX
+;			    PERFUNDON - Konvertimi 7seg to BCD to HEX
 ;=========================================================================================
 
 
 ;=========================================================================================
-;			                   FILLON - Dergimi i te gjithe Bytes
+;			     FILLON - Dergimi i te gjithe Bytes
 ;=========================================================================================
 SEND_ALL_BYTES:
 ;5DH eshte buffer per data
@@ -1159,12 +1159,12 @@ LCALL SEND_ONE_BYTE_EEPROM
 LCALL COUNT_ADDRESS
 RET
 ;=========================================================================================
-;			                   PERFUNDON - Dergimi i te gjite Bytes
+;			   PERFUNDON - Dergimi i te gjite Bytes
 ;=========================================================================================
 
 
 ;=========================================================================================
-;		                      	FILLON - Komunikimi me EEPROM
+;		      FILLON - Komunikimi me EEPROM
 ;=========================================================================================
 
 SEND_ONE_BYTE_EEPROM:
@@ -1258,11 +1258,11 @@ LCALL SHORT_DELAY ;<--
 CLR SDA
 RET
 ;=========================================================================================
-;		                    	PERFUNDON - Komunikimi me EEPROM
+;		     PERFUNDON - Komunikimi me EEPROM
 ;=========================================================================================
 
 ;=========================================================================================
-;		                   	FILLON - Counteri i Addressave per EEPROM
+;		      FILLON - Counteri i Addressave per EEPROM
 ;=========================================================================================
 ;rutina i ruan parametrat ne MSB-3EH dhe LSB-3FH
 COUNT_ADDRESS:
@@ -1281,6 +1281,6 @@ REG_NOT_OVERFLOW_22:
 END_COUNTER_ADDRESS:
 RET
 ;=========================================================================================
-;		                  	PERFUNDON - Counteri i Addresave per EEPROM
+;		      PERFUNDON - Counteri i Addresave per EEPROM
 ;=========================================================================================
 END
